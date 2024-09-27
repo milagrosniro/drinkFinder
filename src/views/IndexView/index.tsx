@@ -1,9 +1,8 @@
-import Header from "../../components/Header"
 
 const IndexView = () => {
   return (
     <>
-    <Header/>
+    <h1>INDEX</h1>
     </>
   )
 }
