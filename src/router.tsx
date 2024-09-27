@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import './index.css'
 import FavoritesView from './views/FavoritesView'
 import IndexView from './views/IndexView'
 
