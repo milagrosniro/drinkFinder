@@ -10,7 +10,7 @@ const App = () => {
         <BrowserRouter>
         <Routes>
             <Route element={<Layout/>} >
-            <Route path={'/'} element={<IndexView/>} />
+            <Route path={'/'} element={<IndexView/>} index /> {/* ppal page*/}
             <Route path={'/favorites'} element={<FavoritesView/>} />
             </Route>
 
