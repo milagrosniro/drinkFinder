@@ -7,7 +7,7 @@ import { FavoritesSlice } from "./favorites-slice.types";
 
 export const createFavoritesSlice : StateCreator<FavoritesSlice & RecipesSlice & NotificationsSlice, [], [], FavoritesSlice> = ((set, get,api) => ({
 favorites: [],
-addFavourite: (recipe: Recipe) => {
+addFavourite: (recipe: Recipe) => {  
     const favorites = get().favorites
     const recipeIsAdded = favorites.find((elem)=> elem.idDrink === recipe.idDrink)
     if(!recipeIsAdded){

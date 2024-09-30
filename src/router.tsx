@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Spinner from './components/Spinner'
 import './index.css'
 import Layout from './layout'
 
@@ -14,12 +15,12 @@ const App = () => {
         <Routes>
             <Route element={<Layout/>} >
             <Route path={'/'} element={
-              <Suspense fallback={'Loading...'}>
+              <Suspense fallback={<Spinner/>}>
               <IndexView/>
             </Suspense>
               } index /> {/* ppal page*/}
             <Route path={'/favorites'} element={
-              <Suspense fallback={'Loading...'}>
+              <Suspense fallback={<Spinner/>}>
 
                 <FavoritesView/>
               </Suspense>

@@ -3,7 +3,7 @@ import { Fragment, useMemo } from "react";
 import { Recipe } from "../../stores/recipe-slice/recipe-slice.types";
 import { UseAppStore } from "../../stores/useAppStore";
 
-export default function Modal() {
+export const Modal = () => {
   const { modal, closeModal, recipeSelected, addFavourite, deleteFavourite, favorites } = UseAppStore();
 
   const isRecipeFavourite = useMemo(()=>{
@@ -30,16 +30,17 @@ export default function Modal() {
   };
 
   const handleAddFavourite = (recipe: Recipe) =>{
+    closeModal()
     addFavourite(recipe)
   }
 
   const handleDeleteFavourite = (id: Recipe['idDrink']) => {
+    closeModal()
     deleteFavourite(id)
-
   }
-
+  
   return (
-    <>
+
       <Transition appear show={modal} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
           <Transition.Child
@@ -70,7 +71,7 @@ export default function Modal() {
                     as="h3"
                     className="text-gray-900 text-4xl font-extrabold my-5 text-center"
                   >
-                    {recipeSelected.strDrink}
+                    {recipeSelected && recipeSelected.strDrink}
                   </Dialog.Title>
                   <img
                     alt={`img-${recipeSelected.idDrink}`}
@@ -122,6 +123,8 @@ export default function Modal() {
           </div>
         </Dialog>
       </Transition>
-    </>
+
   );
 }
+
+export default Modal
