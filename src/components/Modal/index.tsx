@@ -10,10 +10,10 @@ export default function Modal() {
     const isFav = favorites.find(fav => fav.idDrink === recipeSelected.idDrink)
     return isFav
   },[recipeSelected, favorites])
-  console.log('IS FAVOURITE',isRecipeFavourite)
 
-  console.log('FAV: ',favorites)
-  console.log('RECIPE SELECTED', recipeSelected)
+  console.log('IS FAVOURITE',isRecipeFavourite);
+  console.log('FAV: ',favorites);
+  console.log('RECIPE SELECTED', recipeSelected);
 
   const renderIngredients = () => {
     const ingredients: JSX.Element[] = [];
