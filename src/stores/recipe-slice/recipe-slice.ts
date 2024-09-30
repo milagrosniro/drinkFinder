@@ -20,7 +20,7 @@ export const createRecipesSlice : StateCreator<RecipesSlice> = ((set) => ({
 
     },
     selectRecipe: async (id: Drink['idDrink']) =>{
-      console.log(id)
+
       const recipeSelected = await getRecipeSelected(id)
       set(()=>({recipeSelected}))
       set(()=>({modal: true}))

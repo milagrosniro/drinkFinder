@@ -7,7 +7,7 @@ const Header = () => {
 
   const isHome = useMemo(()=>pathname === '/',[pathname]);
 
-  const {fetchCategories, categories, searchRecipes} = UseAppStore();
+  const {fetchCategories, categories, searchRecipes, showNotification} = UseAppStore();
 
   const [searchFilters, setSearchFilters] = useState({
     ingredient: '',
@@ -24,7 +24,12 @@ const Header = () => {
 
   const handleSubmit = (e : React.FormEvent<HTMLFormElement>) =>{
     e.preventDefault();
-    if(Object.values(searchFilters).includes('')){return console.log('All fields are required')}
+    
+    if(Object.values(searchFilters).includes('')){
+    
+      return showNotification({text: 'All fields are required', error: true})
+      
+    }
     const {category, ingredient} = searchFilters
 
     searchRecipes({category, ingredient})
@@ -75,8 +80,8 @@ const Header = () => {
                   value={searchFilters.category}
                   onChange={handleChange}
                   >
-                    <option value={''}>--Select category--</option>
-                    {categories.drinks && categories.drinks.map((category) => <option key={category.strCategory}>{category.strCategory}</option>
+                    <option hidden>--Select category--</option>
+                    {categories && categories.drinks && categories.drinks.map((category) => <option key={category.strCategory}>{category.strCategory}</option>
                     )}
                   </select>
                 </div>

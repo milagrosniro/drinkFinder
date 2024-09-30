@@ -11,9 +11,6 @@ export default function Modal() {
     return isFav
   },[recipeSelected, favorites])
 
-  console.log('IS FAVOURITE',isRecipeFavourite);
-  console.log('FAV: ',favorites);
-  console.log('RECIPE SELECTED', recipeSelected);
 
   const renderIngredients = () => {
     const ingredients: JSX.Element[] = [];

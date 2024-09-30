@@ -1,8 +1,11 @@
+import { lazy, Suspense } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './index.css'
 import Layout from './layout'
-import FavoritesView from './views/FavoritesView'
-import IndexView from './views/IndexView'
+
+const FavoritesView = lazy(()=> import('./views/FavoritesView'))
+const IndexView = lazy(()=> import('./views/IndexView'))
+
 
 const App = () => {
   return (
@@ -10,8 +13,17 @@ const App = () => {
         <BrowserRouter>
         <Routes>
             <Route element={<Layout/>} >
-            <Route path={'/'} element={<IndexView/>} index /> {/* ppal page*/}
-            <Route path={'/favorites'} element={<FavoritesView/>} />
+            <Route path={'/'} element={
+              <Suspense fallback={'Loading...'}>
+              <IndexView/>
+            </Suspense>
+              } index /> {/* ppal page*/}
+            <Route path={'/favorites'} element={
+              <Suspense fallback={'Loading...'}>
+
+                <FavoritesView/>
+              </Suspense>
+              } />
             </Route>
 
             

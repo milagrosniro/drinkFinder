@@ -29,9 +29,9 @@ export const getRecipes = async (filters : SearchFilter) =>{
 export const getRecipeSelected = async(id: Drink['idDrink']) =>{
 const url = `${BASE_URL}lookup.php?i=${id}`
 const {data} = await axios(url)
-console.log(data)
+
 const result = RecipeAPIResponseSchema.safeParse(data.drinks[0])
-console.log(result)
+
 if(result.success){
     return result.data
  }
